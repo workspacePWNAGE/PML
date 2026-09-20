@@ -82,7 +82,7 @@ public class CraftingManager {
 		System.out.println(this.recipes.size() + " recipes");
 	}
 
-	void addRecipe(ItemStack var1, Object... var2) {
+	public void addRecipe(ItemStack var1, Object... var2) {
 		String var3 = "";
 		int var4 = 0;
 		int var5 = 0;

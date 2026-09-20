@@ -101,8 +101,10 @@ import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.glu.GLU;
+import pml.*;
 
 public abstract class Minecraft implements Runnable {
+	public static Minecraft instance;
 	public static byte[] field_28006_b = new byte[10485760];
 	private static Minecraft theMinecraft;
 	public PlayerController playerController;
@@ -194,6 +196,13 @@ public abstract class Minecraft implements Runnable {
 	}
 
 	public void startGame() throws LWJGLException {
+		Minecraft.instance = this;
+
+		if (System.getSecurityManager() == null) {
+			System.setSecurityManager(new PMLSecurityManager());
+		}
+		// pml.PML.init(getMinecraftDir());
+
 		if(this.mcCanvas != null) {
 			Graphics var1 = this.mcCanvas.getGraphics();
 			if(var1 != null) {
@@ -250,6 +259,7 @@ public abstract class Minecraft implements Runnable {
 		Keyboard.create();
 		Mouse.create();
 		this.mouseHelper = new MouseHelper(this.mcCanvas);
+		PML.init(Minecraft.getMinecraftDir());
 
 		try {
 			Controllers.create();
@@ -298,7 +308,6 @@ public abstract class Minecraft implements Runnable {
 		} else {
 			this.displayGuiScreen(new GuiMainMenu());
 		}
-
 	}
 
 	private void loadScreen() throws LWJGLException {
@@ -1162,6 +1171,7 @@ public abstract class Minecraft implements Runnable {
 		}
 
 		this.systemTime = System.currentTimeMillis();
+		pml.PMLEventBus.onClientTick();
 	}
 
 	private void forceReload() {
