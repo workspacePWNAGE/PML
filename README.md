@@ -6,6 +6,16 @@ ___A VERY simple mod loader for Minecraft Beta 1.7.3!___
 __PML Requires basic knowledge of the Minecraft Beta 1.7.3 engine!__
 __You can learn about it yourself by decompiling via [RetroMCP](https://github.com/MCPHackers/RetroMCP-Java)__
 
+# Installation
+___It's recommended to use [Prism Launcher](https://prismlauncher.org/) or [Multi MC](https://multimc.org/) to install this!___  
+_I'll add guides for other launchers/no launcher at some point, but that is not my main priority right now._
+
+## Prism Launcher & Multi MC
+- Open the edit menu on your Beta 1.7.3 instance, and go to "Version"
+- Click on "Minecraft" and press "Add to Minecraft.jar"
+- Select your PML.jar
+- Boom! It should be installed. To test it, launch Minecraft, you should see a custom loading/boot screen; if so, then that means it worked!
+
 # Creating a mod
 ## Quick Jump
 [Main Class](#creating-the-main-class)
